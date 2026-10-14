@@ -1,0 +1,8 @@
+{
+  "name": "Smile Dental Care Clinic",
+  "description": "Leading dental clinic in G-11 Markaz, Islamabad led by Dr. Imtiaz Hussain. High-standard dental care, hygiene, pain-free treatments, cosmetic dentistry, and emergency dental services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

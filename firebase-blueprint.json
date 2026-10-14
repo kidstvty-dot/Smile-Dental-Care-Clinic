@@ -1,0 +1,115 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Patient appointment request at Smile Dental Care Clinic",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "patientName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 30
+        },
+        "service": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "preferredDate": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "preferredTime": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "confirmed",
+            "completed",
+            "cancelled"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "patientName",
+        "phone",
+        "service",
+        "status",
+        "createdAt"
+      ]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "General patient contact inquiry or question",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 30
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "phone",
+        "message",
+        "createdAt"
+      ]
+    },
+    "AdminMeta": {
+      "title": "AdminMeta",
+      "description": "Single master administrator account metadata",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "passwordHash": { "type": "string" },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["name", "email", "passwordHash", "registeredAt"]
+    }
+  },
+  "firestore": {
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Appointment requests submitted by patients and managed by clinic reception"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "General patient contact inquiries"
+    },
+    "/admin_meta/{docId}": {
+      "schema": "AdminMeta",
+      "description": "Single master administrator credentials and metadata"
+    }
+  }
+}
